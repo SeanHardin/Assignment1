@@ -13,8 +13,8 @@ using namespace std;//to use the includes used in main file
 class contact {
 	string name, number;
 public:
-	contact(){name=number="";};//default constructor
-	contact(string a, string b){name=a;number=b;};//2 arg constructor
+	contact();//default constructor
+	contact(string, string);//2 arg constructor
 	void setName(string);//prototypes, descriptions in cpp file.
 	string getName();
 	void setNumber(string);

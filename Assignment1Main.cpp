@@ -33,8 +33,14 @@ int main(){
 
 	while (userInput!='Q' && userInput!= 'q'){//runs until user chooses to quit
 		cout<<"A(Add)|S(Search)|D(Delete)|L(List)|Q(Quit)";//list of commands
-		cin>>userInput;//take whatever the user types and sets it in the character
-		cin.ignore(1000, '\n');
+		string complianceCheckString;//to use sstream/check length
+		stringstream complianceCheck;//to copy user input into string and char
+		getline(cin, complianceCheckString);//get user input
+		complianceCheck << complianceCheckString;
+		complianceCheck>>userInput;//take whatever the user types and sets it in the character
+		if (complianceCheckString.length()>1) {//if user inputs more than a char
+			userInput = 'f';//FOR FAILURE TO COMPLY
+		}
 
 		switch (userInput){//switch statement looks cleaner than nested if loops.
 			case 'A'://capital and lowercase letters for better usability, wasn't sure how to force capitals
@@ -59,6 +65,8 @@ int main(){
 			default://if user tries to type anything other than the listed commands
 				cout << "Please enter only the letter for the option you want." << '\n';
 		}
+		if (userInput != 'q' && userInput != 'Q')//reset char so a \0 doesn't run previous operation again
+			userInput = 'f';
 	}
 	cout << "Thank you for using my phonebook!";//mostly a confirmation that the program ended successfully
 	return 0;
