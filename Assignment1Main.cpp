@@ -32,9 +32,8 @@ int main(){
 	char userInput;//char to read command from user
 
 	while (userInput!='Q' && userInput!= 'q'){//runs until user chooses to quit
-		cout<<"A(Add)|S(Search)|D(Delete)|L(List)|Q(Quit):";//list of commands
+		cout<<"A(Add)|S(Search)|D(Delete)|L(List)|Q(Quit)";//list of commands
 		cin>>userInput;//take whatever the user types and sets it in the character
-		cout<<'\n';//formatting
 		cin.ignore(1000, '\n');
 
 		switch (userInput){//switch statement looks cleaner than nested if loops.
