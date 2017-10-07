@@ -23,7 +23,8 @@ int main(){
 		temp2<<temp;//converting string into stream, so far this was the only way i found to
 		//read the file with a loop without losing data or hardcoding the limit
 		temp2>>a>>b>>c;//stream values as described in initialization
-		phonebook[count].setName(a+' '+b);//combines first and last name and sets the phonebook entry with it.
+		a=a+' '+b;
+		phonebook[count].setName(a);//combines first and last name and sets the phonebook entry with it.
 		phonebook[count].setNumber(c);//sets the number
 		count++;//increment count for the next entry
 	}

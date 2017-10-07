@@ -14,15 +14,15 @@ class contact {
 	string name, number;
 public:
 	contact();//default constructor
-	contact(string, string);//2 arg constructor
-	void setName(string);//prototypes, descriptions in cpp file.
+	contact(const string, const string);//2 arg constructor
+	void setName(const string&);//prototypes, descriptions in cpp file.
 	string getName();
-	void setNumber(string);
+	void setNumber(const string&);
 	string getNumber();
 	friend void addEntry(contact *c, int&);
-	friend void deleteEntry(contact *c, int&);
-	friend void listEntries(contact *c, int&);
-	friend void searchEntry(contact *c, int&);
+	friend void deleteEntry(contact *c, const int&);
+	friend void listEntries(contact *c, const int&);
+	friend void searchEntry(contact *c, const int&);
 	friend ostream& operator<<(ostream&, const contact&);
 };
 

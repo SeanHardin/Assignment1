@@ -5,15 +5,15 @@ using namespace std;
 
 contact::contact(){name=number="";};//default constructor
 
-contact::contact(string a, string b){name=a;number=b;};//2 arg constructor
+contact::contact(const string a, const string b){name=a;number=b;};//2 arg constructor
 
-void contact::setName(string s){//to set the name on already initialized
+void contact::setName(const string& s){//to set the name on already initialized
 	name=s;//entries to the array
 }
 
 string contact::getName(){return name;}//get the name
 
-void contact::setNumber(string s){//set the number
+void contact::setNumber(const string& s){//set the number
 	number=s;
 }
 
@@ -37,7 +37,7 @@ void addEntry(contact *c, int& count){//add entry to the array, nonmember functi
 		cout << "Please enter a real name and number if you want to add someone to the phonebook." << '\n'<<'\n';
 }
 
-void deleteEntry(contact *c, int &count){//deletes an entry
+void deleteEntry(contact *c, const int &count){//deletes an entry
 	cout << "Enter name of the person you want to remove:";
 	string input;
 	getline(cin, input);//read input
@@ -45,7 +45,8 @@ void deleteEntry(contact *c, int &count){//deletes an entry
 	if (input != ""){
 		for (int i=0;i<count;i++){//iterates whole array
 			if (input==c[i].getName()){//if a match is found
-				c[i].setName("");//'deletes' the name
+				string empty;//cant pass "" by reference
+				c[i].setName(empty);//'deletes' the name
 				cout<<input<<" has been removed from the phonebook."<<'\n'<<'\n';
 				deleted=true;//sends message saying it has been deleted
 			}
@@ -56,14 +57,14 @@ void deleteEntry(contact *c, int &count){//deletes an entry
 		cout << "Please input a real name if you want to remove someone from the phonebook."<<'\n'<<'\n';
 }
 
-void listEntries(contact *c, int& count){//lists every contact
+void listEntries(contact *c, const int& count){//lists every contact
 	for (int i=0;i<count;i++){//iterates whole array
 		if (c[i].getName()!="") cout << c[i];//prints all contacts with a name
 	}
 	cout <<'\n';
 }
 
-void searchEntry(contact *c, int& count){//searches for entry matching user input
+void searchEntry(contact *c,const int& count){//searches for entry matching user input
 	cout << "Enter the name of the person you want to call:";
 	string input;//to take in the full name
 	bool found=0;//bool used to tell if operation was successful or not
